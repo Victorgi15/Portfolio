@@ -67,12 +67,12 @@ const Projects = ({ data }) => {
                       href={project.link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className={`rounded-full border border-[color:var(--color-border)] px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-text)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] ${focusRing}`}
+                      className={`inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[10px] uppercase leading-none tracking-[0.3em] text-[color:var(--color-text)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] ${focusRing}`}
                     >
                       {project.status}
                     </a>
                     ) : (
-                      <span className="rounded-full border border-[color:var(--color-border)] px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
+                      <span className="inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[10px] uppercase leading-none tracking-[0.3em] text-[color:var(--color-muted)]">
                         {project.status}
                     </span>
                   )}
@@ -89,6 +89,16 @@ const Projects = ({ data }) => {
                       loading="lazy"
                     />
                   </div>
+                ) : null}
+                {project.site ? (
+                  <a
+                    href={project.site.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`w-fit rounded-full border border-[color:var(--color-border)] px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-text)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] ${focusRing}`}
+                  >
+                    {project.site.label}
+                  </a>
                 ) : null}
                 <div className="flex flex-wrap gap-2 text-xs">
                   {project.stack.map((item) => (

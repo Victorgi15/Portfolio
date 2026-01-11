@@ -18,6 +18,9 @@ import homeLabImage from '../assets/home-lab/home-lab.png';
 import kvmUsbImageOne from '../assets/KVM-USB/84e3f49d-fa4d-469e-b265-dc47853d7fb7.jpg';
 import kvmUsbImageTwo from '../assets/KVM-USB/9891ff18-b3bd-4a22-859f-67f4102fd98c.jpg';
 import cocktailRobotImage from '../assets/robot-cocktails/robot-cocktails-01.jpg';
+import easymileWebsiteImage from '../assets/Easymile-website/Home-screenshot.png';
+import veloToulouseImage from '../assets/velo-toulouse/velo-toulouse.png';
+import easyBattleshipsImage from '../assets/easy-battleships/easy-battleships.png';
 
 export const navigation = {
   brand: 'Victor Gilliocq',
@@ -126,6 +129,51 @@ export const projects = {
       impact: ['One-button device switching', 'Compact, desk-ready assembly'],
       status: 'Open source',
       link: { label: 'GitHub', href: 'https://github.com/Victorgi15/usb-kvm-switch' },
+    },
+    {
+      title: 'EasyMile website sprint (24h)',
+      summary:
+        '24-hour rebuild of the EasyMile website with a focus on fast delivery and clean structure, deployed at easymile-website.victorgilliocq.com.',
+      image: easymileWebsiteImage,
+      imageAlt: 'EasyMile website homepage',
+      stack: ['TypeScript', 'Web', 'Hosting'],
+      impact: ['24-hour delivery', 'Live hosted deployment'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/easymile_website' },
+      site: { label: 'Live site', href: 'https://easymile-website.victorgilliocq.com/' },
+    },
+    {
+      title: 'Toulouse bike availability tracker',
+      summary:
+        "Couldn't find a VeloToulouse bike nearby, so I built a tracker that analyzes availability across city stations.",
+      image: veloToulouseImage,
+      imageAlt: 'VeloToulouse availability tracker interface',
+      stack: ['Data', 'APIs', 'Mapping'],
+      impact: ['Citywide station visibility', 'Quick availability checks'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Volo-Toulouse-tracker' },
+    },
+    {
+      title: 'GeoGuessSerge',
+      summary:
+        'Map-based guessing game to find where Serge was on a given date. Closer guesses score higher points.',
+      stack: ['JavaScript', 'HTML', 'CSS'],
+      impact: ['Live game', 'Score by distance'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/GeoguesSerge' },
+      site: { label: 'Live site', href: 'https://geoguessserge.victorgilliocq.com/' },
+    },
+    {
+      title: 'EasyMile battleships',
+      summary:
+        'Battleship-style game inspired by EasyMile lore, with a Python backend and peer-to-peer web gameplay.',
+      image: easyBattleshipsImage,
+      imageAlt: 'EasyMile battleships game screenshot',
+      stack: ['Python', 'JavaScript', 'CSS', 'Web', 'P2P'],
+      impact: ['No database required', 'Live multiplayer matchups'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/bataille-navale' },
+      site: { label: 'Live site', href: 'https://easy-battleships.victorgilliocq.com/' },
     },
     {
       title: 'Cocktail robot',
