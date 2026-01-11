@@ -11,8 +11,25 @@ const Hero = ({ data }) => {
     }
     return 'text-[color:var(--color-muted)]';
   };
+  const barClass = (tone) => {
+    if (tone === 'warn') {
+      return 'bg-[color:var(--color-accent)]';
+    }
+    if (tone === 'ok') {
+      return 'bg-[color:var(--color-accent-2)]';
+    }
+    if (tone === 'muted') {
+      return 'bg-[color:var(--color-border)]';
+    }
+    return 'bg-[color:var(--color-accent)]';
+  };
   const focusRing =
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--color-base)]';
+
+  const hasBars = Boolean(data.systemSnapshot?.bars?.length);
+  const barStyle = ['shine', 'striped', 'beacon'].includes(data.systemSnapshot?.barsStyle)
+    ? data.systemSnapshot.barsStyle
+    : 'shine';
 
   return (
     <section id="home" className="pb-20 pt-28">
@@ -58,6 +75,30 @@ const Hero = ({ data }) => {
                 </div>
               ))}
             </div>
+            {data.toolbox && data.toolbox.length ? (
+              <div className="grid gap-4 sm:grid-cols-3">
+                {data.toolbox.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] p-4"
+                    >
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-panel)]">
+                        <Icon className="h-4 w-4 text-[color:var(--color-accent-2)]" />
+                      </span>
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
+                          {item.label}
+                        </p>
+                        <p className="mt-1 text-sm text-white">{item.detail}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : null}
           </MotionReveal>
           <MotionReveal delay={0.2} className="space-y-6">
             <Panel className="p-6">
@@ -72,45 +113,75 @@ const Hero = ({ data }) => {
                   {data.systemSnapshot.liveLabel}
                 </span>
               </div>
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                {data.systemSnapshot.metrics.map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] p-3"
-                  >
-                    <p className="text-[11px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
-                      {metric.label}
-                    </p>
-                    <p className="mt-2 text-lg font-semibold text-white">{metric.value}</p>
+              {hasBars ? (
+                <div className="mt-6 space-y-4">
+                  <div className="flex items-center justify-end gap-3">
+                    {data.systemSnapshot.barsStatus ? (
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
+                        {data.systemSnapshot.barsStatus}
+                      </span>
+                    ) : null}
                   </div>
-                ))}
-              </div>
-              <div className="mt-6 grid gap-3">
-                {data.systemSnapshot.signals.map((signal) => (
-                  <div
-                    key={signal.label}
-                    className="flex items-center justify-between rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] px-4 py-3 text-sm"
-                  >
-                    <span className="text-[color:var(--color-muted)]">{signal.label}</span>
-                    <span className={`${levelClass(signal.level)} font-semibold`}>
-                      {signal.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 border-t border-[color:var(--color-border)] pt-4">
-                <p className="text-[11px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
-                  {data.systemSnapshot.logsLabel}
-                </p>
-                <div className="mt-3 space-y-2 text-xs font-mono">
-                  {data.systemSnapshot.logs.map((log) => (
-                    <div key={`${log.time}-${log.message}`} className="flex gap-3">
-                      <span className="text-[color:var(--color-muted)]">{log.time}</span>
-                      <span className={levelClass(log.level)}>{log.message}</span>
+                  {data.systemSnapshot.bars.map((bar) => (
+                    <div key={bar.label} className="space-y-2">
+                      <div className="flex items-center justify-between text-xs uppercase tracking-[0.28em]">
+                        <span className="text-[color:var(--color-muted)]">{bar.label}</span>
+                        <span className="text-[color:var(--color-text)]">{bar.detail}</span>
+                      </div>
+                      <div className="h-2 w-full rounded-full bg-[color:var(--color-panel-soft)]">
+                        <div
+                          className={`loading-bar loading-bar--${barStyle} h-full rounded-full ${barClass(
+                            bar.tone
+                          )}`}
+                          style={{ width: `${bar.value}%` }}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
+              ) : (
+                <>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                    {data.systemSnapshot.metrics.map((metric) => (
+                      <div
+                        key={metric.label}
+                        className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] p-3"
+                      >
+                        <p className="text-[11px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
+                          {metric.label}
+                        </p>
+                        <p className="mt-2 text-lg font-semibold text-white">{metric.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 grid gap-3">
+                    {data.systemSnapshot.signals.map((signal) => (
+                      <div
+                        key={signal.label}
+                        className="flex items-center justify-between rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] px-4 py-3 text-sm"
+                      >
+                        <span className="text-[color:var(--color-muted)]">{signal.label}</span>
+                        <span className={`${levelClass(signal.level)} font-semibold`}>
+                          {signal.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 border-t border-[color:var(--color-border)] pt-4">
+                    <p className="text-[11px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
+                      {data.systemSnapshot.logsLabel}
+                    </p>
+                    <div className="mt-3 space-y-2 text-xs font-mono">
+                      {data.systemSnapshot.logs.map((log) => (
+                        <div key={`${log.time}-${log.message}`} className="flex gap-3">
+                          <span className="text-[color:var(--color-muted)]">{log.time}</span>
+                          <span className={levelClass(log.level)}>{log.message}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </Panel>
           </MotionReveal>
         </div>

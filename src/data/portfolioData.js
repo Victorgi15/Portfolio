@@ -13,17 +13,17 @@ import {
   Terminal,
   Wrench,
 } from 'lucide-react';
-import spotifyExporterImage from '../assets/spotify-exporter.png';
-import homeLabImage from '../assets/home-lab.png';
+import spotifyExporterImage from '../assets/spotify-exporter/spotify-exporter.png';
+import homeLabImage from '../assets/home-lab/home-lab.png';
 import kvmUsbImageOne from '../assets/KVM-USB/84e3f49d-fa4d-469e-b265-dc47853d7fb7.jpg';
 import kvmUsbImageTwo from '../assets/KVM-USB/9891ff18-b3bd-4a22-859f-67f4102fd98c.jpg';
+import cocktailRobotImage from '../assets/robot-cocktails/robot-cocktails-01.jpg';
 
 export const navigation = {
   brand: 'Victor Gilliocq',
   cta: { label: 'Contact', href: '#contact' },
   links: [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
     { id: 'projects', label: 'Projects' },
     { id: 'method', label: 'Method' },
     { id: 'skills', label: 'Capabilities' },
@@ -34,56 +34,57 @@ export const navigation = {
 
 export const hero = {
   kicker: 'Mechatronics engineer',
-  headline: 'Integrating software, electronics, and mechanics into reliable robotic systems.',
+  headline: 'I build machines that move, blink, and behave (most days).',
   subheadline:
-    'I design, build, and validate embedded and robotic platforms with a focus on system integration, testing, and field performance.',
+    'Mechanical design, electronics, and code under one roof - plus the troubleshooting when "it worked yesterday".',
   ctas: [
     { label: 'View projects', href: '#projects', variant: 'primary' },
     { label: 'Start a conversation', href: '#contact', variant: 'ghost' },
   ],
   quickFacts: [
     { label: 'Focus', value: 'Robotics and embedded systems' },
-    { label: 'Stack', value: 'C/C++, Python, ROS 2, embedded Linux' },
-    { label: 'Validation', value: 'HIL, test benches, field trials' },
+    { label: 'Stack', value: 'Python, ROS, embedded Linux, JS/React' },
+    { label: 'Mechanics', value: 'CAD design, assemblies, mesh, 3D printing' },
+  ],
+  toolbox: [
+    { label: 'Electronics', detail: 'PCBs, sensors, power control', icon: CircuitBoard },
+    { label: 'Tooling', detail: 'Git, VS Code, Jira, Docker', icon: Cpu },
+    {
+      label: 'Bias',
+      detail: 'Unconditional love for stats, graphs, and numbers',
+      icon: Activity,
+    },
   ],
   systemSnapshot: {
-    title: 'Integration snapshot',
-    status: 'System healthy',
+    title: 'Current project',
+    status: 'Tracking progress with real-world tinkering.',
     liveLabel: 'Live',
-    logsLabel: 'Bench log',
-    metrics: [
-      { label: 'Control loop', value: '1 kHz' },
-      { label: 'Latency', value: '3.6 ms' },
-      { label: 'Uptime', value: '99.8%' },
-    ],
-    signals: [
-      { label: 'Sensor bus', value: 'stable', level: 'ok' },
-      { label: 'Drive chain', value: 'nominal', level: 'ok' },
-      { label: 'Safety state', value: 'armed', level: 'warn' },
-      { label: 'Telemetry', value: 'streaming', level: 'ok' },
-    ],
-    logs: [
-      { time: '14:02:18', message: 'HIL scenario passed', level: 'ok' },
-      { time: '14:03:01', message: 'IMU bias within limits', level: 'ok' },
-      { time: '14:03:46', message: 'Thermal model update queued', level: 'warn' },
+    barsStatus: 'Downloading...',
+    barsStyle: 'shine',
+    bars: [
+      { label: 'Useless projects', detail: '78%', value: 78, tone: 'ok' },
+      { label: 'Mystery bug', detail: '42%', value: 42, tone: 'warn' },
+      { label: '3D print queue', detail: '2 parts', value: 28, tone: 'ok' },
+      { label: 'Tea reserves', detail: '61%', value: 61, tone: 'ok' },
+      { label: 'Schedule realism', detail: '+1 week', value: 34, tone: 'warn' },
     ],
   },
 };
 
 export const about = {
   eyebrow: 'About',
-  title: 'Systems integration with measurable validation.',
+  title: 'Swiss-army mechatronics with a taste for the real world.',
   description:
-    'I bridge firmware, electronics, and mechanics to deliver robotic systems that survive outside the lab.',
+    'I design, build, and debug full systems - and I can explain why the plan moved by a week.',
   paragraphs: [
-    'My work spans embedded firmware, control loops, sensor fusion, and hardware integration. I focus on clear interfaces and rigorous testing so prototypes can evolve into dependable products.',
-    'I enjoy cross-disciplinary environments where architecture, manufacturing constraints, and software reliability all matter. I build test benches, document failure modes, and iterate quickly with real data.',
+    'I mix mechanical design, electronics, and software to get prototypes out of slides and onto the bench. If it moves, blinks, or prints in 3D, I am interested.',
+    'I am usually the one who reads the documentation when things stop working, then turns the fix into a repeatable process. I also enjoy planning and aligning stakeholders when the timeline needs a realistic reset.',
   ],
   highlightsTitle: 'What you get',
   highlights: [
-    'End-to-end ownership from requirements to field validation.',
-    'Practical engineering documentation and system handoff.',
-    'Focus on safety, reliability, and maintainable interfaces.',
+    'A full-stack builder across mechanics, electronics, and code.',
+    'Field-first mindset with practical testing and documentation.',
+    'Engineering + management perspective on scope, risks, and timelines.',
   ],
 };
 
@@ -125,6 +126,25 @@ export const projects = {
       impact: ['One-button device switching', 'Compact, desk-ready assembly'],
       status: 'Open source',
       link: { label: 'GitHub', href: 'https://github.com/Victorgi15/usb-kvm-switch' },
+    },
+    {
+      title: 'Cocktail robot',
+      summary:
+        'Automated cocktail-making robot combining mechanical design, custom electronics, motor control, and sensor-driven dosing with an Android companion app.',
+      image: cocktailRobotImage,
+      imageAlt: 'Cocktail robot prototype',
+      stack: [
+        'Mechanical design',
+        'Electronics',
+        'Power control',
+        'Sensors',
+        'Arduino',
+        'Motors',
+        'Android',
+      ],
+      impact: ['Repeatable dispensing', 'Integrated mobile control'],
+      status: 'Prototype',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/robot-cocktails.git' },
     },
     {
       title: 'Autonomous mobile robot stack',
