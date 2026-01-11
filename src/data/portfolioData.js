@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import spotifyExporterImage from '../assets/spotify-exporter.png';
 import homeLabImage from '../assets/home-lab.png';
+import kvmUsbImageOne from '../assets/KVM-USB/84e3f49d-fa4d-469e-b265-dc47853d7fb7.jpg';
+import kvmUsbImageTwo from '../assets/KVM-USB/9891ff18-b3bd-4a22-859f-67f4102fd98c.jpg';
 
 export const navigation = {
   brand: 'Victor Gilliocq',
@@ -110,6 +112,19 @@ export const projects = {
       link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Home-Server' },
       image: homeLabImage,
       imageAlt: 'Home lab server monitoring overview',
+    },
+    {
+      title: 'DIY USB KVM switch',
+      summary:
+        'Mechanical enclosure, 3D-printed housing, and custom PCB to switch USB peripherals between a work laptop and personal PC with a single button.',
+      images: [
+        { src: kvmUsbImageOne, alt: 'USB KVM switch prototype photo 1' },
+        { src: kvmUsbImageTwo, alt: 'USB KVM switch prototype photo 2' },
+      ],
+      stack: ['Mechanical design', '3D printing', 'PCB design', 'USB', 'CAD'],
+      impact: ['One-button device switching', 'Compact, desk-ready assembly'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/usb-kvm-switch' },
     },
     {
       title: 'Autonomous mobile robot stack',
