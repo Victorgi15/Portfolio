@@ -214,6 +214,102 @@ section {
   stroke-linejoin: round;
 }
 
+.stickman-wallpaper {
+  position: absolute;
+  top: 64px;
+  right: clamp(16px, 40vw, 520px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.stickman-wallpaper__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 34px);
+  grid-template-rows: repeat(2, 34px);
+  gap: 8px;
+}
+
+.stickman-wallpaper__key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid rgb(var(--color-text));
+  background: transparent;
+  color: rgb(var(--color-text));
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 0 1px rgba(var(--color-text) / 0.35),
+    0 0 10px rgba(var(--color-text) / 0.22);
+}
+
+.stickman-wallpaper__key--blank {
+  opacity: 0;
+}
+
+.stickman-wallpaper__icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 720px) {
+  .stickman-wallpaper {
+    top: 120px;
+    right: 16px;
+    opacity: 0.45;
+  }
+
+  .stickman-wallpaper__grid {
+    grid-template-columns: repeat(3, 28px);
+    grid-template-rows: repeat(2, 28px);
+    gap: 6px;
+  }
+
+  .stickman-wallpaper__key {
+    font-size: 12px;
+  }
+
+  .stickman-wallpaper__icon {
+    width: 14px;
+    height: 14px;
+    stroke-width: 1.8;
+  }
+}
+
+.stickman-wallpaper__key--up {
+  animation: arrowPulse 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes arrowPulse {
+  0%,
+  86%,
+  100% {
+    transform: translateY(0);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+  94% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stickman-wallpaper__key--up {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .stickman-layer {
     display: none;

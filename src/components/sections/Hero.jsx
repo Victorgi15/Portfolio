@@ -32,8 +32,37 @@ const Hero = ({ data }) => {
     : 'shine';
 
   return (
-    <section id="home" className="pb-20 pt-28">
-      <div className="mx-auto w-full max-w-6xl px-6">
+    <section id="home" className="relative pb-20 pt-28">
+      <div className="stickman-wallpaper" aria-hidden="true">
+        <div className="stickman-wallpaper__grid">
+          <span className="stickman-wallpaper__key stickman-wallpaper__key--blank" />
+          <span
+            className="stickman-wallpaper__key stickman-wallpaper__key--up"
+            data-stick-platform="true"
+          >
+            <svg className="stickman-wallpaper__icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 13V3M8 3l-4 4M8 3l4 4" />
+            </svg>
+          </span>
+          <span className="stickman-wallpaper__key stickman-wallpaper__key--blank" />
+          <span className="stickman-wallpaper__key" data-stick-platform="true">
+            <svg className="stickman-wallpaper__icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M13 8H3M3 8l4-4M3 8l4 4" />
+            </svg>
+          </span>
+          <span className="stickman-wallpaper__key" data-stick-platform="true">
+            <svg className="stickman-wallpaper__icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 3v10M8 13l-4-4M8 13l4-4" />
+            </svg>
+          </span>
+          <span className="stickman-wallpaper__key" data-stick-platform="true">
+            <svg className="stickman-wallpaper__icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 8h10M13 8l-4-4M13 8l-4 4" />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <MotionReveal className="flex flex-col gap-8">
             <div className="space-y-4">
