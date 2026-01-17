@@ -13,11 +13,11 @@ const ProjectCarousel = ({ images, title }) => {
   const current = images[index];
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)]">
+    <div className="relative h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)]">
       <img
         src={current.src}
         alt={current.alt || title}
-        className="h-44 w-full object-cover brightness-90"
+        className="h-full w-full object-cover brightness-90"
         loading="lazy"
       />
       {total > 1 ? (
@@ -55,40 +55,78 @@ const Projects = ({ data }) => {
           />
         </MotionReveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
-          {data.items.map((project, index) => (
-            <MotionReveal key={project.title} delay={index * 0.05}>
-              <Panel className="flex h-full flex-col gap-4 p-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-display font-semibold text-white">
-                    {project.title}
-                  </h3>
-                    {project.link ? (
-                    <a
-                      href={project.link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[10px] uppercase leading-none tracking-[0.3em] text-[color:var(--color-text)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] ${focusRing}`}
-                    >
-                      {project.status}
-                    </a>
+          {data.items.map((project, index) => {
+            const hasSite = Boolean(project.site?.href);
+            const hasSource = Boolean(project.link?.href);
+            const cardHref = hasSite ? project.site.href : project.link?.href;
+            const statusLabel =
+              project.status === 'Open source' ? 'View source code' : project.status;
+            const showSourceButton =
+              hasSite && hasSource && project.status === 'Open source';
+            const isClickable = Boolean(cardHref);
+
+            const handleCardClick = () => {
+              if (!cardHref) return;
+              window.open(cardHref, '_blank', 'noopener,noreferrer');
+            };
+
+            const handleKeyDown = (event) => {
+              if (!isClickable) return;
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                handleCardClick();
+              }
+            };
+
+            return (
+              <MotionReveal key={project.title} delay={index * 0.05}>
+                <div
+                  role={isClickable ? 'link' : undefined}
+                  tabIndex={isClickable ? 0 : undefined}
+                  onClick={isClickable ? handleCardClick : undefined}
+                  onKeyDown={isClickable ? handleKeyDown : undefined}
+                  className={`group block h-full ${
+                    isClickable ? `cursor-pointer ${focusRing}` : ''
+                  }`}
+                >
+                  <Panel
+                    className="relative flex h-full flex-col gap-4 p-6 transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:border-[color:var(--color-accent)] group-hover:shadow-glow"
+                    data-stick-platform="true"
+                  >
+                    {showSourceButton ? (
+                      <a
+                        href={project.link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(event) => event.stopPropagation()}
+                        className="absolute right-6 top-6 inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[9px] uppercase leading-tight tracking-[0.2em] text-[color:var(--color-muted)] whitespace-nowrap transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
+                      >
+                        {statusLabel}
+                      </a>
                     ) : (
-                      <span className="inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[10px] uppercase leading-none tracking-[0.3em] text-[color:var(--color-muted)]">
-                        {project.status}
-                    </span>
-                  )}
-                </div>
-                <p className="text-sm text-[color:var(--color-muted)]">{project.summary}</p>
+                      <span className="absolute right-6 top-6 inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[9px] uppercase leading-tight tracking-[0.2em] text-[color:var(--color-muted)] whitespace-nowrap">
+                        {statusLabel}
+                      </span>
+                    )}
+                    <div className="flex items-start pr-28">
+                      <h3 className="project-title text-lg font-display font-semibold text-white">
+                        {project.title}
+                      </h3>
+                    </div>
+                <p className="project-summary text-sm text-[color:var(--color-muted)]">
+                  {project.summary}
+                </p>
                 {project.images && project.images.length ? (
                   <ProjectCarousel images={project.images} title={project.title} />
                 ) : project.video ? (
                   <div
-                    className={`overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] ${
+                    className={`h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] box-border ${
                       project.videoFit === 'contain' ? 'p-3' : ''
                     }`}
                   >
                     <video
                       src={project.video}
-                      className={`h-44 w-full ${
+                      className={`h-full w-full ${
                         project.videoFit === 'contain'
                           ? 'object-contain'
                           : 'object-cover brightness-90'
@@ -103,14 +141,14 @@ const Projects = ({ data }) => {
                   </div>
                 ) : project.image ? (
                   <div
-                    className={`overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] ${
+                    className={`h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] box-border ${
                       project.imageFit === 'contain' ? 'p-3' : ''
                     }`}
                   >
                     <img
                       src={project.image}
                       alt={project.imageAlt || project.title}
-                      className={`h-44 w-full ${
+                      className={`h-full w-full ${
                         project.imageFit === 'contain'
                           ? 'object-contain'
                           : 'object-cover brightness-90'
@@ -118,16 +156,6 @@ const Projects = ({ data }) => {
                       loading="lazy"
                     />
                   </div>
-                ) : null}
-                {project.site ? (
-                  <a
-                    href={project.site.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className={`w-fit rounded-full border border-[color:var(--color-border)] px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-text)] transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] ${focusRing}`}
-                  >
-                    {project.site.label}
-                  </a>
                 ) : null}
                 <div className="flex flex-wrap gap-2 text-xs">
                   {project.stack.map((item) => (
@@ -142,9 +170,11 @@ const Projects = ({ data }) => {
                     </div>
                   ))}
                 </div>
-              </Panel>
-            </MotionReveal>
-          ))}
+                  </Panel>
+                </div>
+              </MotionReveal>
+            );
+          })}
         </div>
       </div>
     </section>

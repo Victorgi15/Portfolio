@@ -6,6 +6,7 @@ import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
 import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
+import Stickman from './components/ui/Stickman';
 import { contact, footer, hero, highlights, method, navigation, projects, skills } from './data/portfolioData';
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
       <Contact data={contact} />
     </main>
     <Footer note={footer.note} />
+    <Stickman />
   </div>
 );
 

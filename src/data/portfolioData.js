@@ -123,7 +123,7 @@ export const projects = {
       videoFit: 'contain',
       stack: ['Genetic algorithms', 'Physics simulation', 'PBD', 'XPBD-lite'],
       impact: ['Creatures evolve toward goals', 'Custom constraint + impulse solver'],
-      status: 'Open source',
+      status: 'Work in progress',
       link: { label: 'GitHub', href: 'https://github.com/Victorgi15/JumpEvolutionSim' },
     },
     {
