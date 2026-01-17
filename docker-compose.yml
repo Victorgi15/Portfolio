@@ -1,0 +1,24 @@
+services:
+  frontend:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${CI_REGISTRY_IMAGE:-local}/victor-portfolio-frontend:${APP_VERSION:-latest}
+    expose:
+      - "80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.victor-portfolio.rule=Host(`${FRONTEND_HOST}`)"
+      - "traefik.http.routers.victor-portfolio.entrypoints=websecure"
+      - "traefik.http.routers.victor-portfolio.tls.certresolver=letsencrypt"
+      - "traefik.http.services.victor-portfolio.loadbalancer.server.port=80"
+      - "traefik.http.routers.victor-portfolio.priority=1"
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
+    name: dokploy-network

@@ -40,7 +40,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
   background: radial-gradient(
     860px 680px at 0% 0%,
@@ -54,7 +54,35 @@ body::before {
 
 #root {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+.gol-hole {
+  --gol-shift: clamp(8px, 1.6vw, 20px);
+  --gol-extend-x: clamp(24px, 6vw, 96px);
+  --gol-extend-y: clamp(120px, 22vw, 260px);
+  --gol-height: clamp(180px, 28vw, 260px);
+  position: relative;
+  height: calc(var(--gol-height) + var(--gol-extend-y));
+  width: calc(100% - var(--gol-shift) + var(--gol-extend-x));
+  margin-left: var(--gol-shift);
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.gol-hole--float {
+  position: absolute;
+  top: calc(100% + 24px);
+  left: 0;
+}
+
+.gol-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.7;
 }
 
 @keyframes haloPulse {

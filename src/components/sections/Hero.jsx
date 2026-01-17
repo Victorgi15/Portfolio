@@ -1,5 +1,6 @@
 import MotionReveal from '../ui/MotionReveal';
 import Panel from '../ui/Panel';
+import GameOfLifeBackground from '../ui/GameOfLifeBackground';
 
 const Hero = ({ data }) => {
   const levelClass = (level) => {
@@ -132,7 +133,7 @@ const Hero = ({ data }) => {
               </div>
             ) : null}
           </MotionReveal>
-          <MotionReveal delay={0.2} className="space-y-6">
+          <MotionReveal delay={0.2} className="relative">
             <Panel className="p-6" data-stick-platform="true" data-stick-spawn="true">
               <div className="flex items-start justify-between">
                 <div className="space-y-1">
@@ -215,6 +216,9 @@ const Hero = ({ data }) => {
                 </>
               )}
             </Panel>
+            <div className="gol-hole gol-hole--float" aria-hidden="true">
+              <GameOfLifeBackground />
+            </div>
           </MotionReveal>
         </div>
       </div>
