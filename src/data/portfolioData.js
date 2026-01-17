@@ -21,6 +21,12 @@ import cocktailRobotImage from '../assets/robot-cocktails/robot-cocktails-01.jpg
 import easymileWebsiteImage from '../assets/Easymile-website/Home-screenshot.png';
 import veloToulouseImage from '../assets/velo-toulouse/velo-toulouse.png';
 import easyBattleshipsImage from '../assets/easy-battleships/easy-battleships.png';
+import mosquitoTrapImage from '../assets/piege-moustiques/piege-moustique.png';
+import geoguessSergeImageOne from '../assets/GeoguessSerge/GeoguessSerge1.png';
+import geoguessSergeImageTwo from '../assets/GeoguessSerge/GeoguessSerge2.png';
+import dotAndBoxesImage from '../assets/dot-and-boxes/dot-and-boxes.png';
+import ragPocImage from '../assets/RAG/rag.png';
+import jumpEvolutionVideo from '../assets/simu/triad.mp4';
 
 export const navigation = {
   brand: 'Victor Gilliocq',
@@ -98,7 +104,8 @@ export const projects = {
   items: [
     {
       title: 'Spotify playlist exporter',
-      summary: 'Python CLI tool that extracts track titles and artists from Spotify playlists into CSV and JSON.',
+      summary:
+        'Python CLI tool that extracts track titles and artists from Spotify playlists into CSV and JSON, built to speed up analysis workflows.',
       stack: ['Python', 'Spotify API', 'CSV', 'JSON'],
       impact: ['One-command export workflow', 'Clean data structure for analysis or reuse'],
       status: 'Open source',
@@ -109,7 +116,7 @@ export const projects = {
     {
       title: 'Home server with YAMS',
       summary:
-        'Self-hosted Docker services orchestrated with YAMS, including Home Assistant and secure network access.',
+        'Self-hosted Docker services orchestrated with YAMS, including Home Assistant and secure network access, to centralize and document home automation.',
       stack: ['Linux', 'Docker', 'YAMS', 'Home Assistant', 'DNS', 'DHCP', 'VPN'],
       impact: ['Dedicated DNS and VPN access', 'Hardened system services and maintenance workflows'],
       status: 'Open source',
@@ -120,7 +127,7 @@ export const projects = {
     {
       title: 'DIY USB KVM switch',
       summary:
-        'Mechanical enclosure, 3D-printed housing, and custom PCB to switch USB peripherals between a work laptop and personal PC with a single button.',
+        'Mechanical enclosure, 3D-printed housing, and custom PCB to switch USB peripherals between a work laptop and personal PC with a single button, removing daily cable swaps.',
       images: [
         { src: kvmUsbImageOne, alt: 'USB KVM switch prototype photo 1' },
         { src: kvmUsbImageTwo, alt: 'USB KVM switch prototype photo 2' },
@@ -131,9 +138,20 @@ export const projects = {
       link: { label: 'GitHub', href: 'https://github.com/Victorgi15/usb-kvm-switch' },
     },
     {
+      title: 'Mosquito trap (3D)',
+      summary:
+        '3D-designed mosquito trap with iterative prototyping and print tests, built as a cheaper alternative for my mother.',
+      image: mosquitoTrapImage,
+      imageAlt: '3D-printed mosquito trap prototype',
+      stack: ['3D design', 'Prototyping', '3D printing', 'CAD'],
+      impact: ['Low-cost home build', 'Design iterations from print tests'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/moskito-trap' },
+    },
+    {
       title: 'EasyMile website sprint (24h)',
       summary:
-        '24-hour rebuild of the EasyMile website with a focus on fast delivery and clean structure, deployed at easymile-website.victorgilliocq.com.',
+        '24-hour rebuild of the EasyMile website with a focus on fast delivery and clean structure, deployed at easymile-website.victorgilliocq.com as a timed test of execution.',
       image: easymileWebsiteImage,
       imageAlt: 'EasyMile website homepage',
       stack: ['TypeScript', 'Web', 'Hosting'],
@@ -145,7 +163,7 @@ export const projects = {
     {
       title: 'Toulouse bike availability tracker',
       summary:
-        "Couldn't find a VeloToulouse bike nearby, so I built a tracker that analyzes availability across city stations.",
+        "Couldn't find a VeloToulouse bike nearby, so I built a tracker that analyzes availability across city stations to make quick decisions.",
       image: veloToulouseImage,
       imageAlt: 'VeloToulouse availability tracker interface',
       stack: ['Data', 'APIs', 'Mapping'],
@@ -156,7 +174,11 @@ export const projects = {
     {
       title: 'GeoGuessSerge',
       summary:
-        'Map-based guessing game to find where Serge was on a given date. Closer guesses score higher points.',
+        'Map-based guessing game to find where Serge was on a given date, built as a lightweight web game for friends.',
+      images: [
+        { src: geoguessSergeImageOne, alt: 'GeoGuessSerge gameplay screen 1' },
+        { src: geoguessSergeImageTwo, alt: 'GeoGuessSerge gameplay screen 2' },
+      ],
       stack: ['JavaScript', 'HTML', 'CSS'],
       impact: ['Live game', 'Score by distance'],
       status: 'Open source',
@@ -164,9 +186,45 @@ export const projects = {
       site: { label: 'Live site', href: 'https://geoguessserge.victorgilliocq.com/' },
     },
     {
+      title: 'Dots and Boxes bots',
+      summary:
+        'Dots and Boxes playground built to compare bot strategies, from API-driven AI to MCTS, AlphaZero-style self-play, and neural networks, to study tradeoffs.',
+      image: dotAndBoxesImage,
+      imageAlt: 'Dots and Boxes game interface',
+      stack: ['Python', 'JavaScript', 'Game AI', 'MCTS', 'Neural networks'],
+      impact: ['Comparative bot benchmarks', 'Live playable demo'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Dots_and_box/tree/master' },
+      site: { label: 'Live site', href: 'https://dots-and-boxes.victorgilliocq.com/' },
+    },
+    {
+      title: 'RAG prototype (Vald lyrics)',
+      summary:
+        'Proof-of-concept RAG built end-to-end to learn the pipeline, using Vald lyrics as a private data source not covered by ChatGPT, with custom embeddings and clustering.',
+      image: ragPocImage,
+      imageAlt: 'RAG pipeline diagram',
+      imageFit: 'contain',
+      stack: ['Python', 'Embeddings', 'Clustering', 'RAG'],
+      impact: ['Custom corpus ingestion', 'Retrieval-first QA pipeline'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/POC-slack-trained-RAG' },
+    },
+    {
+      title: 'Jump evolution simulator',
+      summary:
+        'Genetic algorithm exploration using a custom XPBD-lite physics engine to evolve creatures toward objectives.',
+      video: jumpEvolutionVideo,
+      videoAlt: 'Evolution simulator preview',
+      videoFit: 'contain',
+      stack: ['Genetic algorithms', 'Physics simulation', 'PBD', 'XPBD-lite'],
+      impact: ['Creatures evolve toward goals', 'Custom constraint + impulse solver'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/JumpEvolutionSim' },
+    },
+    {
       title: 'EasyMile battleships',
       summary:
-        'Battleship-style game inspired by EasyMile lore, with a Python backend and peer-to-peer web gameplay.',
+        'Battleship-style game inspired by EasyMile lore, with a Python backend and peer-to-peer web gameplay to explore live multiplayer sync.',
       image: easyBattleshipsImage,
       imageAlt: 'EasyMile battleships game screenshot',
       stack: ['Python', 'JavaScript', 'CSS', 'Web', 'P2P'],
@@ -178,7 +236,7 @@ export const projects = {
     {
       title: 'Cocktail robot',
       summary:
-        'Automated cocktail-making robot combining mechanical design, custom electronics, motor control, and sensor-driven dosing with an Android companion app.',
+        'Automated cocktail-making robot combining mechanical design, custom electronics, motor control, and sensor-driven dosing with an Android companion app, focused on repeatability.',
       image: cocktailRobotImage,
       imageAlt: 'Cocktail robot prototype',
       stack: [
@@ -196,42 +254,42 @@ export const projects = {
     },
     {
       title: 'Autonomous mobile robot stack',
-      summary: 'ROS 2 navigation with SLAM, sensor fusion, and mission control.',
+      summary: 'ROS 2 navigation with SLAM, sensor fusion, and mission control, integrating the full loop from mapping to execution.',
       stack: ['ROS 2', 'C++', 'SLAM', 'Linux'],
       impact: ['Reduced localization drift by 30%', '15 Hz mapping and planning loop'],
       status: 'Prototype',
     },
     {
       title: 'Embedded motor control firmware',
-      summary: 'Field-oriented control with CAN telemetry and safety interlocks.',
+      summary: 'Field-oriented control with CAN telemetry and safety interlocks, built to harden reliability and diagnostics.',
       stack: ['C', 'FOC', 'CAN', 'RTOS'],
       impact: ['Stable torque control under load', 'Integrated fault handling'],
       status: 'Deployed',
     },
     {
       title: 'HIL validation bench',
-      summary: 'Hardware-in-the-loop rig for servo drive and sensor validation.',
+      summary: 'Hardware-in-the-loop rig for servo drive and sensor validation, built to automate regression and edge cases.',
       stack: ['Python', 'DAQ', 'LabVIEW', 'Test rigs'],
       impact: ['Cut regression time by 40%', 'Automated edge-case scenarios'],
       status: 'In use',
     },
     {
       title: 'Vision-guided pick and place',
-      summary: 'Camera pipeline with calibration and motion synchronization.',
+      summary: 'Camera pipeline with calibration and motion synchronization, emphasizing precise timing and alignment.',
       stack: ['OpenCV', 'ROS 2', 'Kinematics'],
       impact: ['Repeatability within 0.6 mm', 'Cycle time under 2.8 s'],
       status: 'Pilot',
     },
     {
       title: 'Battery management prototype',
-      summary: 'Telemetry, balancing, and thermal safeguards for mobile platforms.',
+      summary: 'Telemetry, balancing, and thermal safeguards for mobile platforms, focused on safe runtime consistency.',
       stack: ['Embedded C', 'CAN', 'Thermal modeling'],
       impact: ['Improved runtime consistency', 'Safe shutdown sequencing'],
       status: 'Prototype',
     },
     {
       title: 'Robotic end-effector design',
-      summary: 'Mechanical integration with sensor routing and stress analysis.',
+      summary: 'Mechanical integration with sensor routing and stress analysis, optimized for weight and serviceability.',
       stack: ['CAD', 'FEA', 'Manufacturing'],
       impact: ['Weight reduced by 18%', 'Simplified maintenance access'],
       status: 'Delivered',
@@ -353,16 +411,3 @@ export const contact = {
 export const footer = {
   note: 'Built for engineering teams that value reliable systems and clear validation.',
 };
-import dotAndBoxesImage from '../assets/dot-and-boxes/dot-and-boxes.png';
-    {
-      title: 'Dots and Boxes bots',
-      summary:
-        'Dots and Boxes playground built to compare bot strategies, from API-driven AI to MCTS, AlphaZero-style self-play, and neural networks.',
-      image: dotAndBoxesImage,
-      imageAlt: 'Dots and Boxes game interface',
-      stack: ['Python', 'JavaScript', 'Game AI', 'MCTS', 'Neural networks'],
-      impact: ['Comparative bot benchmarks', 'Live playable demo'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Dots_and_box/tree/master' },
-      site: { label: 'Live site', href: 'https://dots-and-boxes.victorgilliocq.com/' },
-    },

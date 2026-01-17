@@ -80,12 +80,41 @@ const Projects = ({ data }) => {
                 <p className="text-sm text-[color:var(--color-muted)]">{project.summary}</p>
                 {project.images && project.images.length ? (
                   <ProjectCarousel images={project.images} title={project.title} />
+                ) : project.video ? (
+                  <div
+                    className={`overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] ${
+                      project.videoFit === 'contain' ? 'p-3' : ''
+                    }`}
+                  >
+                    <video
+                      src={project.video}
+                      className={`h-44 w-full ${
+                        project.videoFit === 'contain'
+                          ? 'object-contain'
+                          : 'object-cover brightness-90'
+                      }`}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-label={project.videoAlt || project.title}
+                    />
+                  </div>
                 ) : project.image ? (
-                  <div className="overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)]">
+                  <div
+                    className={`overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] ${
+                      project.imageFit === 'contain' ? 'p-3' : ''
+                    }`}
+                  >
                     <img
                       src={project.image}
                       alt={project.imageAlt || project.title}
-                      className="h-44 w-full object-cover brightness-90"
+                      className={`h-44 w-full ${
+                        project.imageFit === 'contain'
+                          ? 'object-contain'
+                          : 'object-cover brightness-90'
+                      }`}
                       loading="lazy"
                     />
                   </div>
