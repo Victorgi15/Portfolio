@@ -353,3 +353,16 @@ export const contact = {
 export const footer = {
   note: 'Built for engineering teams that value reliable systems and clear validation.',
 };
+import dotAndBoxesImage from '../assets/dot-and-boxes/dot-and-boxes.png';
+    {
+      title: 'Dots and Boxes bots',
+      summary:
+        'Dots and Boxes playground built to compare bot strategies, from API-driven AI to MCTS, AlphaZero-style self-play, and neural networks.',
+      image: dotAndBoxesImage,
+      imageAlt: 'Dots and Boxes game interface',
+      stack: ['Python', 'JavaScript', 'Game AI', 'MCTS', 'Neural networks'],
+      impact: ['Comparative bot benchmarks', 'Live playable demo'],
+      status: 'Open source',
+      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Dots_and_box/tree/master' },
+      site: { label: 'Live site', href: 'https://dots-and-boxes.victorgilliocq.com/' },
+    },
