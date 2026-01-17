@@ -244,9 +244,9 @@ section {
 
 .stickman-wallpaper {
   position: absolute;
-  top: 64px;
-  right: clamp(16px, 40vw, 520px);
-  z-index: 0;
+  top: -130px;
+  right: 0px;
+  z-index: 5;
   pointer-events: none;
   opacity: 0.55;
 }
@@ -291,9 +291,9 @@ section {
 
 @media (max-width: 720px) {
   .stickman-wallpaper {
-    top: 120px;
-    right: 16px;
-    opacity: 0.45;
+    top: -32px;
+    right: -8px;
+    opacity: 0.5;
   }
 
   .stickman-wallpaper__grid {
