@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MotionReveal from '../ui/MotionReveal';
 import Panel from '../ui/Panel';
 import SectionHeader from '../ui/SectionHeader';
@@ -11,13 +11,32 @@ const ProjectCarousel = ({ images, title }) => {
   const [index, setIndex] = useState(0);
   const total = images.length;
   const current = images[index];
+  const isContain = current.fit === 'contain';
+
+  useEffect(() => {
+    if (total <= 1) return undefined;
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) return undefined;
+
+    const intervalId = window.setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % total);
+    }, 4000);
+
+    return () => window.clearInterval(intervalId);
+  }, [total]);
 
   return (
-    <div className="relative h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)]">
+    <div
+      className={`relative h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] ${
+        isContain ? 'p-3' : ''
+      }`}
+    >
       <img
         src={current.src}
         alt={current.alt || title}
-        className="h-full w-full object-cover brightness-90"
+        className={`h-full w-full brightness-90 ${
+          isContain ? 'object-contain' : 'object-cover'
+        }`}
         loading="lazy"
       />
       {total > 1 ? (

@@ -22,6 +22,8 @@ import easymileWebsiteImage from '../assets/Easymile-website/Home-screenshot.png
 import veloToulouseImage from '../assets/velo-toulouse/velo-toulouse.png';
 import easyBattleshipsImage from '../assets/easy-battleships/easy-battleships.png';
 import mosquitoTrapImage from '../assets/piege-moustiques/piege-moustique.png';
+import mosquitoTrapImageTwo from '../assets/piege-moustiques/piege-moustique2.jpg';
+import mosquitoTrapImageThree from '../assets/piege-moustiques/piege-moustique3.jpg';
 import geoguessSergeImageOne from '../assets/GeoguessSerge/GeoguessSerge1.png';
 import geoguessSergeImageTwo from '../assets/GeoguessSerge/GeoguessSerge2.png';
 import dotAndBoxesImage from '../assets/dot-and-boxes/dot-and-boxes.png';
@@ -155,8 +157,11 @@ export const projects = {
       title: 'Mosquito trap (3D)',
       summary:
         '3D-designed mosquito trap with iterative prototyping and print tests, built as a cheaper alternative for my mother.',
-      image: mosquitoTrapImage,
-      imageAlt: '3D-printed mosquito trap prototype',
+      images: [
+        { src: mosquitoTrapImage, alt: '3D-printed mosquito trap prototype' },
+        { src: mosquitoTrapImageTwo, alt: 'Mosquito trap prototype photo 2' },
+        { src: mosquitoTrapImageThree, alt: 'Mosquito trap prototype photo 3' },
+      ],
       stack: ['3D design', 'Prototyping', '3D printing', 'CAD'],
       impact: ['Low-cost home build', 'Design iterations from print tests'],
       status: 'Open source',
