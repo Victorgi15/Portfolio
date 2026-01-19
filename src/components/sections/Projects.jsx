@@ -75,7 +75,7 @@ const Projects = ({ data }) => {
             eyebrowPlatform
           />
         </MotionReveal>
-        <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-12 grid gap-12 lg:gap-14 lg:grid-cols-2 xl:grid-cols-3">
           {data.items.map((project, index) => {
             const hasSite = Boolean(project.site?.href);
             const hasSource = Boolean(project.link?.href);

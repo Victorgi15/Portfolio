@@ -4,7 +4,7 @@ import SectionHeader from '../ui/SectionHeader';
 
 const Method = ({ data }) => (
   <section id="method" className="py-20">
-    <div className="mx-auto w-full max-w-6xl px-6">
+    <div className="mx-auto w-full max-w-[1400px] px-6">
       <MotionReveal>
         <SectionHeader
           eyebrow={data.eyebrow}

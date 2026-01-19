@@ -4,7 +4,7 @@ const Navbar = ({ navigation }) => {
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-[color:var(--color-border)] bg-[rgba(10,14,20,0.85)] backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-4">
         <a
           href="#home"
           className={`font-display text-base font-semibold text-white ${focusRing}`}

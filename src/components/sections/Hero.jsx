@@ -34,9 +34,9 @@ const Hero = ({ data }) => {
 
   return (
     <section id="home" className="relative pb-20 pt-28">
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <MotionReveal className="flex flex-col gap-8">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:items-center">
+          <MotionReveal className="flex flex-col gap-8 lg:max-w-[640px]">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.35em] text-[color:var(--color-muted)]">
                 {data.kicker}
@@ -64,7 +64,7 @@ const Hero = ({ data }) => {
                 </a>
               ))}
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-10 sm:grid-cols-3">
               {data.quickFacts.map((fact) => {
                 const Icon = fact.icon;
 
@@ -90,7 +90,7 @@ const Hero = ({ data }) => {
               })}
             </div>
             {data.toolbox && data.toolbox.length ? (
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-10 sm:grid-cols-3">
                 {data.toolbox.map((item) => {
                   const Icon = item.icon;
 
@@ -115,7 +115,7 @@ const Hero = ({ data }) => {
               </div>
             ) : null}
           </MotionReveal>
-          <MotionReveal delay={0.2} className="relative">
+          <MotionReveal delay={0.2} className="relative w-full lg:w-[560px] lg:justify-self-end">
             <div className="relative">
               <Panel className="p-6" data-stick-platform="true" data-stick-spawn="true">
                 <div className="flex items-start justify-between">
