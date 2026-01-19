@@ -31,6 +31,7 @@ import projectsData from './projects.json';
 import methodData from './method.json';
 import heroData from './hero.json';
 import currentProjectData from './currentProject.json';
+import skillsData from './skills.json';
 
 const projectMedia = {
   dotAndBoxesImage,
@@ -83,13 +84,25 @@ const mapProjectItem = (item) => {
   return mapped;
 };
 
+const skillIcons = {
+  Bot,
+  CircuitBoard,
+  Cpu,
+  ShieldCheck,
+  Wrench,
+};
+
+const mapSkillCategory = (category) => ({
+  ...category,
+  icon: skillIcons[category.icon] ?? category.icon,
+});
+
 export const navigation = {
   brand: 'Victor Gilliocq',
   cta: { label: 'Contact', href: '#contact' },
   links: [
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Capabilities' },
     { id: 'contact', label: 'Contact' },
   ],
 };
@@ -125,36 +138,8 @@ export const projects = {
 export const method = methodData;
 
 export const skills = {
-  eyebrow: 'Capabilities',
-  title: 'Cross-domain engineering expertise.',
-  description: 'From embedded control to mechanical integration and validation.',
-  categories: [
-    {
-      title: 'Embedded and control',
-      icon: Cpu,
-      items: ['C/C++', 'RTOS', 'Motor control', 'Sensor fusion', 'Safety systems'],
-    },
-    {
-      title: 'Robotics software',
-      icon: Bot,
-      items: ['ROS 2', 'Navigation', 'Kinematics', 'Computer vision', 'Simulation'],
-    },
-    {
-      title: 'Electronics and hardware',
-      icon: CircuitBoard,
-      items: ['PCB bring-up', 'Signal integrity', 'Power systems', 'CAN and UART', 'EMC basics'],
-    },
-    {
-      title: 'Mechanical integration',
-      icon: Wrench,
-      items: ['CAD', 'Tolerance stacks', 'Thermal design', 'Manufacturing handoff'],
-    },
-    {
-      title: 'Validation and test',
-      icon: ShieldCheck,
-      items: ['HIL rigs', 'Test automation', 'Reliability metrics', 'Field trials'],
-    },
-  ],
+  ...skillsData,
+  categories: skillsData.categories.map(mapSkillCategory),
 };
 
 export const contact = {

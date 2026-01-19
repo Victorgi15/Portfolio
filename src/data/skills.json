@@ -1,0 +1,32 @@
+{
+  "eyebrow": "Capabilities",
+  "title": "Cross-domain engineering expertise.",
+  "description": "From embedded control to mechanical integration and validation.",
+  "categories": [
+    {
+      "title": "Embedded and control",
+      "icon": "Cpu",
+      "items": ["C/C++", "RTOS", "Motor control", "Sensor fusion", "Safety systems"]
+    },
+    {
+      "title": "Robotics software",
+      "icon": "Bot",
+      "items": ["ROS 2", "Navigation", "Kinematics", "Computer vision", "Simulation"]
+    },
+    {
+      "title": "Electronics and hardware",
+      "icon": "CircuitBoard",
+      "items": ["PCB bring-up", "Signal integrity", "Power systems", "CAN and UART", "EMC basics"]
+    },
+    {
+      "title": "Mechanical integration",
+      "icon": "Wrench",
+      "items": ["CAD", "Tolerance stacks", "Thermal design", "Manufacturing handoff"]
+    },
+    {
+      "title": "Validation and test",
+      "icon": "ShieldCheck",
+      "items": ["HIL rigs", "Test automation", "Reliability metrics", "Field trials"]
+    }
+  ]
+}
