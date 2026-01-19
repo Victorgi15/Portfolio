@@ -71,6 +71,8 @@ const Projects = ({ data }) => {
             eyebrow={data.eyebrow}
             title={data.title}
             description={data.description}
+            titlePlatform
+            eyebrowPlatform
           />
         </MotionReveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
