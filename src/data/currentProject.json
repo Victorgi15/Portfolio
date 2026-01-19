@@ -1,0 +1,14 @@
+{
+  "title": "Current project",
+  "status": "Tracking progress with real-world tinkering.",
+  "liveLabel": "Live",
+  "barsStatus": "Downloading...",
+  "barsStyle": "shine",
+  "bars": [
+    { "label": "Useless projects", "detail": "78%", "value": 78, "tone": "ok" },
+    { "label": "Mystery bug", "detail": "42%", "value": 42, "tone": "warn" },
+    { "label": "3D print queue", "detail": "2 parts", "value": 28, "tone": "ok" },
+    { "label": "Tea reserves", "detail": "61%", "value": 61, "tone": "ok" },
+    { "label": "Schedule realism", "detail": "+1 week", "value": 34, "tone": "warn" }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "eyebrow": "Projects",
+  "title": "Selected mechatronics work.",
+  "description": "Robotics, embedded control, and integration projects with measurable outcomes.",
+  "items": [
+    {
+      "title": "Dots and Boxes bots",
+      "summary": "Dots and Boxes playground built to compare bot strategies, from API-driven AI to MCTS, AlphaZero-style self-play, and neural networks, to study tradeoffs.",
+      "image": "dotAndBoxesImage",
+      "imageAlt": "Dots and Boxes game interface",
+      "stack": ["Python", "JavaScript", "Game AI", "MCTS", "Neural networks"],
+      "impact": ["Comparative bot benchmarks", "Live playable demo"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/Dots_and_box/tree/master" },
+      "site": { "label": "Live site", "href": "https://dots-and-boxes.victorgilliocq.com/" }
+    },
+    {
+      "title": "Jump evolution simulator",
+      "summary": "Genetic algorithm exploration using a custom XPBD-lite physics engine to evolve creatures toward objectives.",
+      "video": "jumpEvolutionVideo",
+      "videoAlt": "Evolution simulator preview",
+      "videoFit": "contain",
+      "stack": ["Genetic algorithms", "Physics simulation", "PBD", "XPBD-lite"],
+      "impact": ["Creatures evolve toward goals", "Custom constraint + impulse solver"],
+      "status": "Work in progress",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/JumpEvolutionSim" }
+    },
+    {
+      "title": "RAG prototype (Vald lyrics)",
+      "summary": "Proof-of-concept RAG built end-to-end to learn the pipeline, using Vald lyrics as a private data source not covered by ChatGPT, with custom embeddings and clustering.",
+      "image": "ragPocImage",
+      "imageAlt": "RAG pipeline diagram",
+      "imageFit": "contain",
+      "stack": ["Python", "Embeddings", "Clustering", "RAG"],
+      "impact": ["Custom corpus ingestion", "Retrieval-first QA pipeline"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/POC-slack-trained-RAG" }
+    },
+    {
+      "title": "DIY USB KVM switch",
+      "summary": "Mechanical enclosure, 3D-printed housing, and custom PCB to switch USB peripherals between a work laptop and personal PC with a single button, removing daily cable swaps.",
+      "images": [
+        { "src": "kvmUsbImageOne", "alt": "USB KVM switch prototype photo 1" },
+        { "src": "kvmUsbImageTwo", "alt": "USB KVM switch prototype photo 2" }
+      ],
+      "stack": ["Mechanical design", "3D printing", "PCB design", "USB", "CAD"],
+      "impact": ["One-button device switching", "Compact, desk-ready assembly"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/usb-kvm-switch" }
+    },
+    {
+      "title": "Mosquito trap (3D)",
+      "summary": "3D-designed mosquito trap with iterative prototyping and print tests, built as a cheaper alternative for my mother.",
+      "images": [
+        { "src": "mosquitoTrapImage", "alt": "3D-printed mosquito trap prototype" },
+        { "src": "mosquitoTrapImageTwo", "alt": "Mosquito trap prototype photo 2" },
+        { "src": "mosquitoTrapImageThree", "alt": "Mosquito trap prototype photo 3" }
+      ],
+      "stack": ["3D design", "Prototyping", "3D printing", "CAD"],
+      "impact": ["Low-cost home build", "Design iterations from print tests"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/moskito-trap" }
+    },
+    {
+      "title": "Cocktail robot",
+      "summary": "Automated cocktail-making robot combining mechanical design, custom electronics, motor control, and sensor-driven dosing with an Android companion app, focused on repeatability.",
+      "image": "cocktailRobotImage",
+      "imageAlt": "Cocktail robot prototype",
+      "stack": [
+        "Mechanical design",
+        "Electronics",
+        "Power control",
+        "Sensors",
+        "Arduino",
+        "Motors",
+        "Android"
+      ],
+      "impact": ["Repeatable dispensing", "Integrated mobile control"],
+      "status": "Prototype",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/robot-cocktails.git" }
+    },
+    {
+      "title": "Home server with YAMS",
+      "summary": "Self-hosted Docker services orchestrated with YAMS, including Home Assistant and secure network access, to centralize and document home automation.",
+      "image": "homeLabImage",
+      "imageAlt": "Home lab server monitoring overview",
+      "stack": ["Linux", "Docker", "YAMS", "Home Assistant", "DNS", "DHCP", "VPN"],
+      "impact": ["Dedicated DNS and VPN access", "Hardened system services and maintenance workflows"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/Home-Server" }
+    },
+    {
+      "title": "EasyMile battleships",
+      "summary": "Battleship-style game inspired by EasyMile lore, with a Python backend and peer-to-peer web gameplay to explore live multiplayer sync.",
+      "image": "easyBattleshipsImage",
+      "imageAlt": "EasyMile battleships game screenshot",
+      "stack": ["Python", "JavaScript", "CSS", "Web", "P2P"],
+      "impact": ["No database required", "Live multiplayer matchups"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/bataille-navale" },
+      "site": { "label": "Live site", "href": "https://easy-battleships.victorgilliocq.com/" }
+    },
+    {
+      "title": "EasyMile website sprint (24h)",
+      "summary": "24-hour rebuild of the EasyMile website with a focus on fast delivery and clean structure, deployed at easymile-website.victorgilliocq.com as a timed test of execution.",
+      "image": "easymileWebsiteImage",
+      "imageAlt": "EasyMile website homepage",
+      "stack": ["TypeScript", "Web", "Hosting"],
+      "impact": ["24-hour delivery", "Live hosted deployment"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/easymile_website" },
+      "site": { "label": "Live site", "href": "https://easymile-website.victorgilliocq.com/" }
+    },
+    {
+      "title": "Toulouse bike availability tracker",
+      "summary": "Couldn't find a VeloToulouse bike nearby, so I built a tracker that analyzes availability across city stations to make quick decisions.",
+      "image": "veloToulouseImage",
+      "imageAlt": "VeloToulouse availability tracker interface",
+      "stack": ["Data", "APIs", "Mapping"],
+      "impact": ["Citywide station visibility", "Quick availability checks"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/Volo-Toulouse-tracker" }
+    },
+    {
+      "title": "GeoGuessSerge",
+      "summary": "Map-based guessing game to find where Serge was on a given date, built as a lightweight web game for friends.",
+      "images": [
+        { "src": "geoguessSergeImageOne", "alt": "GeoGuessSerge gameplay screen 1" },
+        { "src": "geoguessSergeImageTwo", "alt": "GeoGuessSerge gameplay screen 2" }
+      ],
+      "stack": ["JavaScript", "HTML", "CSS"],
+      "impact": ["Live game", "Score by distance"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/GeoguesSerge" },
+      "site": { "label": "Live site", "href": "https://geoguessserge.victorgilliocq.com/" }
+    },
+    {
+      "title": "Spotify playlist exporter",
+      "summary": "Python CLI tool that extracts track titles and artists from Spotify playlists into CSV and JSON, built to speed up analysis workflows.",
+      "image": "spotifyExporterImage",
+      "imageAlt": "Spotify playlist exporter UI preview",
+      "stack": ["Python", "Spotify API", "CSV", "JSON"],
+      "impact": ["One-command export workflow", "Clean data structure for analysis or reuse"],
+      "status": "Open source",
+      "link": { "label": "GitHub", "href": "https://github.com/Victorgi15/spotify-playlist-export" }
+    }
+  ]
+}

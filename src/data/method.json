@@ -1,0 +1,23 @@
+{
+  "eyebrow": "Method",
+  "title": "A structured loop for complex systems.",
+  "description": "A repeatable approach that de-risks integration and speeds iteration.",
+  "outputsLabel": "Outputs",
+  "steps": [
+    {
+      "title": "Plan and frame",
+      "summary": "Align scope, requirements, interfaces, and a realistic plan.",
+      "outputs": ["System map", "Risk register", "Planification"]
+    },
+    {
+      "title": "Build and deliver",
+      "summary": "Produce working code, CAD, or automation flows with review-ready artifacts.",
+      "outputs": ["Implementation build", "Design or code reviews", "R&D insights"]
+    },
+    {
+      "title": "Validate and iterate",
+      "summary": "Run HIL and field tests, close gaps, and harden the design.",
+      "outputs": ["Test reports", "Release candidate", "Handoff docs"]
+    }
+  ]
+}

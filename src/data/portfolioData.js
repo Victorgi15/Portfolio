@@ -4,13 +4,11 @@ import {
   CircuitBoard,
   Cpu,
   Gauge,
-  GitBranch,
   Github,
   Linkedin,
   Mail,
   MapPin,
   ShieldCheck,
-  Terminal,
   Wrench,
 } from 'lucide-react';
 import spotifyExporterImage from '../assets/spotify-exporter/spotify-exporter.png';
@@ -29,6 +27,61 @@ import geoguessSergeImageTwo from '../assets/GeoguessSerge/GeoguessSerge2.png';
 import dotAndBoxesImage from '../assets/dot-and-boxes/dot-and-boxes.png';
 import ragPocImage from '../assets/RAG/rag.png';
 import jumpEvolutionVideo from '../assets/simu/triad.mp4';
+import projectsData from './projects.json';
+import methodData from './method.json';
+import heroData from './hero.json';
+import currentProjectData from './currentProject.json';
+
+const projectMedia = {
+  dotAndBoxesImage,
+  jumpEvolutionVideo,
+  ragPocImage,
+  kvmUsbImageOne,
+  kvmUsbImageTwo,
+  mosquitoTrapImage,
+  mosquitoTrapImageTwo,
+  mosquitoTrapImageThree,
+  cocktailRobotImage,
+  homeLabImage,
+  easyBattleshipsImage,
+  easymileWebsiteImage,
+  veloToulouseImage,
+  geoguessSergeImageOne,
+  geoguessSergeImageTwo,
+  spotifyExporterImage,
+};
+
+const heroIcons = {
+  Activity,
+  CircuitBoard,
+  Cpu,
+};
+
+const mapHeroToolboxItem = (item) => ({
+  ...item,
+  icon: heroIcons[item.icon] ?? item.icon,
+});
+
+const mapProjectItem = (item) => {
+  const mapped = { ...item };
+
+  if (item.image) {
+    mapped.image = projectMedia[item.image] ?? item.image;
+  }
+
+  if (item.video) {
+    mapped.video = projectMedia[item.video] ?? item.video;
+  }
+
+  if (item.images) {
+    mapped.images = item.images.map((image) => ({
+      ...image,
+      src: projectMedia[image.src] ?? image.src,
+    }));
+  }
+
+  return mapped;
+};
 
 export const navigation = {
   brand: 'Victor Gilliocq',
@@ -38,48 +91,14 @@ export const navigation = {
     { id: 'projects', label: 'Projects' },
     { id: 'method', label: 'Method' },
     { id: 'skills', label: 'Capabilities' },
-    { id: 'highlights', label: 'Highlights' },
     { id: 'contact', label: 'Contact' },
   ],
 };
 
 export const hero = {
-  kicker: 'Mechatronics engineer',
-  headline: 'I build machines that move, blink, and behave (most days).',
-  subheadline:
-    'Mechanical design, electronics, and code under one roof - plus the troubleshooting when "it worked yesterday".',
-  ctas: [
-    { label: 'View projects', href: '#projects', variant: 'primary' },
-    { label: 'Start a conversation', href: '#contact', variant: 'ghost' },
-  ],
-  quickFacts: [
-    { label: 'Focus', value: 'Robotics and embedded systems' },
-    { label: 'Stack', value: 'Python, ROS, embedded Linux, JS/React' },
-    { label: 'Mechanics', value: 'CAD design, assemblies, mesh, 3D printing' },
-  ],
-  toolbox: [
-    { label: 'Electronics', detail: 'PCBs, sensors, power control', icon: CircuitBoard },
-    { label: 'Tooling', detail: 'Git, VS Code, Jira, Docker', icon: Cpu },
-    {
-      label: 'Bias',
-      detail: 'Unconditional love for stats, graphs, and numbers',
-      icon: Activity,
-    },
-  ],
-  systemSnapshot: {
-    title: 'Current project',
-    status: 'Tracking progress with real-world tinkering.',
-    liveLabel: 'Live',
-    barsStatus: 'Downloading...',
-    barsStyle: 'shine',
-    bars: [
-      { label: 'Useless projects', detail: '78%', value: 78, tone: 'ok' },
-      { label: 'Mystery bug', detail: '42%', value: 42, tone: 'warn' },
-      { label: '3D print queue', detail: '2 parts', value: 28, tone: 'ok' },
-      { label: 'Tea reserves', detail: '61%', value: 61, tone: 'ok' },
-      { label: 'Schedule realism', detail: '+1 week', value: 34, tone: 'warn' },
-    ],
-  },
+  ...heroData,
+  toolbox: heroData.toolbox.map(mapHeroToolboxItem),
+  systemSnapshot: currentProjectData,
 };
 
 export const about = {
@@ -100,189 +119,11 @@ export const about = {
 };
 
 export const projects = {
-  eyebrow: 'Projects',
-  title: 'Selected mechatronics work.',
-  description: 'Robotics, embedded control, and integration projects with measurable outcomes.',
-  items: [
-    {
-      title: 'Dots and Boxes bots',
-      summary:
-        'Dots and Boxes playground built to compare bot strategies, from API-driven AI to MCTS, AlphaZero-style self-play, and neural networks, to study tradeoffs.',
-      image: dotAndBoxesImage,
-      imageAlt: 'Dots and Boxes game interface',
-      stack: ['Python', 'JavaScript', 'Game AI', 'MCTS', 'Neural networks'],
-      impact: ['Comparative bot benchmarks', 'Live playable demo'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Dots_and_box/tree/master' },
-      site: { label: 'Live site', href: 'https://dots-and-boxes.victorgilliocq.com/' },
-    },
-    {
-      title: 'Jump evolution simulator',
-      summary:
-        'Genetic algorithm exploration using a custom XPBD-lite physics engine to evolve creatures toward objectives.',
-      video: jumpEvolutionVideo,
-      videoAlt: 'Evolution simulator preview',
-      videoFit: 'contain',
-      stack: ['Genetic algorithms', 'Physics simulation', 'PBD', 'XPBD-lite'],
-      impact: ['Creatures evolve toward goals', 'Custom constraint + impulse solver'],
-      status: 'Work in progress',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/JumpEvolutionSim' },
-    },
-    {
-      title: 'RAG prototype (Vald lyrics)',
-      summary:
-        'Proof-of-concept RAG built end-to-end to learn the pipeline, using Vald lyrics as a private data source not covered by ChatGPT, with custom embeddings and clustering.',
-      image: ragPocImage,
-      imageAlt: 'RAG pipeline diagram',
-      imageFit: 'contain',
-      stack: ['Python', 'Embeddings', 'Clustering', 'RAG'],
-      impact: ['Custom corpus ingestion', 'Retrieval-first QA pipeline'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/POC-slack-trained-RAG' },
-    },
-    {
-      title: 'DIY USB KVM switch',
-      summary:
-        'Mechanical enclosure, 3D-printed housing, and custom PCB to switch USB peripherals between a work laptop and personal PC with a single button, removing daily cable swaps.',
-      images: [
-        { src: kvmUsbImageOne, alt: 'USB KVM switch prototype photo 1' },
-        { src: kvmUsbImageTwo, alt: 'USB KVM switch prototype photo 2' },
-      ],
-      stack: ['Mechanical design', '3D printing', 'PCB design', 'USB', 'CAD'],
-      impact: ['One-button device switching', 'Compact, desk-ready assembly'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/usb-kvm-switch' },
-    },
-    {
-      title: 'Mosquito trap (3D)',
-      summary:
-        '3D-designed mosquito trap with iterative prototyping and print tests, built as a cheaper alternative for my mother.',
-      images: [
-        { src: mosquitoTrapImage, alt: '3D-printed mosquito trap prototype' },
-        { src: mosquitoTrapImageTwo, alt: 'Mosquito trap prototype photo 2' },
-        { src: mosquitoTrapImageThree, alt: 'Mosquito trap prototype photo 3' },
-      ],
-      stack: ['3D design', 'Prototyping', '3D printing', 'CAD'],
-      impact: ['Low-cost home build', 'Design iterations from print tests'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/moskito-trap' },
-    },
-    {
-      title: 'Cocktail robot',
-      summary:
-        'Automated cocktail-making robot combining mechanical design, custom electronics, motor control, and sensor-driven dosing with an Android companion app, focused on repeatability.',
-      image: cocktailRobotImage,
-      imageAlt: 'Cocktail robot prototype',
-      stack: [
-        'Mechanical design',
-        'Electronics',
-        'Power control',
-        'Sensors',
-        'Arduino',
-        'Motors',
-        'Android',
-      ],
-      impact: ['Repeatable dispensing', 'Integrated mobile control'],
-      status: 'Prototype',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/robot-cocktails.git' },
-    },
-    {
-      title: 'Home server with YAMS',
-      summary:
-        'Self-hosted Docker services orchestrated with YAMS, including Home Assistant and secure network access, to centralize and document home automation.',
-      stack: ['Linux', 'Docker', 'YAMS', 'Home Assistant', 'DNS', 'DHCP', 'VPN'],
-      impact: ['Dedicated DNS and VPN access', 'Hardened system services and maintenance workflows'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Home-Server' },
-      image: homeLabImage,
-      imageAlt: 'Home lab server monitoring overview',
-    },
-    {
-      title: 'EasyMile battleships',
-      summary:
-        'Battleship-style game inspired by EasyMile lore, with a Python backend and peer-to-peer web gameplay to explore live multiplayer sync.',
-      image: easyBattleshipsImage,
-      imageAlt: 'EasyMile battleships game screenshot',
-      stack: ['Python', 'JavaScript', 'CSS', 'Web', 'P2P'],
-      impact: ['No database required', 'Live multiplayer matchups'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/bataille-navale' },
-      site: { label: 'Live site', href: 'https://easy-battleships.victorgilliocq.com/' },
-    },
-    {
-      title: 'EasyMile website sprint (24h)',
-      summary:
-        '24-hour rebuild of the EasyMile website with a focus on fast delivery and clean structure, deployed at easymile-website.victorgilliocq.com as a timed test of execution.',
-      image: easymileWebsiteImage,
-      imageAlt: 'EasyMile website homepage',
-      stack: ['TypeScript', 'Web', 'Hosting'],
-      impact: ['24-hour delivery', 'Live hosted deployment'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/easymile_website' },
-      site: { label: 'Live site', href: 'https://easymile-website.victorgilliocq.com/' },
-    },
-    {
-      title: 'Toulouse bike availability tracker',
-      summary:
-        "Couldn't find a VeloToulouse bike nearby, so I built a tracker that analyzes availability across city stations to make quick decisions.",
-      image: veloToulouseImage,
-      imageAlt: 'VeloToulouse availability tracker interface',
-      stack: ['Data', 'APIs', 'Mapping'],
-      impact: ['Citywide station visibility', 'Quick availability checks'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/Volo-Toulouse-tracker' },
-    },
-    {
-      title: 'GeoGuessSerge',
-      summary:
-        'Map-based guessing game to find where Serge was on a given date, built as a lightweight web game for friends.',
-      images: [
-        { src: geoguessSergeImageOne, alt: 'GeoGuessSerge gameplay screen 1' },
-        { src: geoguessSergeImageTwo, alt: 'GeoGuessSerge gameplay screen 2' },
-      ],
-      stack: ['JavaScript', 'HTML', 'CSS'],
-      impact: ['Live game', 'Score by distance'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/GeoguesSerge' },
-      site: { label: 'Live site', href: 'https://geoguessserge.victorgilliocq.com/' },
-    },
-    {
-      title: 'Spotify playlist exporter',
-      summary:
-        'Python CLI tool that extracts track titles and artists from Spotify playlists into CSV and JSON, built to speed up analysis workflows.',
-      stack: ['Python', 'Spotify API', 'CSV', 'JSON'],
-      impact: ['One-command export workflow', 'Clean data structure for analysis or reuse'],
-      status: 'Open source',
-      link: { label: 'GitHub', href: 'https://github.com/Victorgi15/spotify-playlist-export' },
-      image: spotifyExporterImage,
-      imageAlt: 'Spotify playlist exporter UI preview',
-    },
-  ],
+  ...projectsData,
+  items: projectsData.items.map(mapProjectItem),
 };
 
-export const method = {
-  eyebrow: 'Method',
-  title: 'A structured loop for complex systems.',
-  description: 'A repeatable approach that de-risks integration and speeds iteration.',
-  outputsLabel: 'Outputs',
-  steps: [
-    {
-      title: 'Frame the system',
-      summary: 'Translate requirements into architecture, interfaces, and constraints.',
-      outputs: ['System map', 'Risk register', 'Integration plan'],
-    },
-    {
-      title: 'Prototype and instrument',
-      summary: 'Build fast, add telemetry, and make assumptions visible.',
-      outputs: ['Bench prototype', 'Telemetry spec', 'Failure modes'],
-    },
-    {
-      title: 'Validate and iterate',
-      summary: 'Run HIL and field tests, close gaps, and harden the design.',
-      outputs: ['Test reports', 'Release candidate', 'Handoff docs'],
-    },
-  ],
-};
+export const method = methodData;
 
 export const skills = {
   eyebrow: 'Capabilities',
@@ -313,35 +154,6 @@ export const skills = {
       title: 'Validation and test',
       icon: ShieldCheck,
       items: ['HIL rigs', 'Test automation', 'Reliability metrics', 'Field trials'],
-    },
-  ],
-};
-
-export const highlights = {
-  eyebrow: 'Highlights',
-  title: 'Outcomes that improve reliability and speed.',
-  description: 'Focused on performance, safety, and repeatable validation.',
-  metrics: [
-    { label: 'Prototype cycles', value: '8+', detail: 'Robotics and automation builds' },
-    { label: 'Regression time', value: '-40%', detail: 'Automated test pipelines' },
-    { label: 'Field uptime', value: '99%', detail: 'After stabilization and fixes' },
-    { label: 'Integration latency', value: '<4 ms', detail: 'Real-time control loops' },
-  ],
-  highlights: [
-    {
-      title: 'Integration audits',
-      detail: 'Interface reviews and wiring documentation to reduce bench time.',
-      icon: GitBranch,
-    },
-    {
-      title: 'Diagnostics telemetry',
-      detail: 'Unified logs for firmware, ROS nodes, and test instrumentation.',
-      icon: Terminal,
-    },
-    {
-      title: 'Predictive monitoring',
-      detail: 'Health signals to anticipate failures before deployment.',
-      icon: Activity,
     },
   ],
 };

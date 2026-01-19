@@ -1,0 +1,23 @@
+{
+  "kicker": "Mechatronics engineer",
+  "headline": "I build machines that move, blink, and behave (most days).",
+  "subheadline": "Mechanical design, electronics, and code under one roof - plus the troubleshooting when \"it worked yesterday\".",
+  "ctas": [
+    { "label": "View projects", "href": "#projects", "variant": "primary" },
+    { "label": "Start a conversation", "href": "#contact", "variant": "ghost" }
+  ],
+  "quickFacts": [
+    { "label": "Focus", "value": "Robotics and embedded systems" },
+    { "label": "Stack", "value": "Python, ROS, embedded Linux, JS/React" },
+    { "label": "Mechanics", "value": "CAD design, assemblies, mesh, 3D printing" }
+  ],
+  "toolbox": [
+    { "label": "Electronics", "detail": "PCBs, sensors, power control", "icon": "CircuitBoard" },
+    { "label": "Tooling", "detail": "Git, VS Code, Jira, Docker", "icon": "Cpu" },
+    {
+      "label": "Bias",
+      "detail": "Unconditional love for stats, graphs, and numbers",
+      "icon": "Activity"
+    }
+  ]
+}
