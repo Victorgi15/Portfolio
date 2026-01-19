@@ -3,8 +3,8 @@
   "headline": "I build machines that move, blink, and behave (most days).",
   "subheadline": "Mechanical design, electronics, and code under one roof - plus the troubleshooting when \"it worked yesterday\".",
   "ctas": [
-    { "label": "View projects", "href": "#projects", "variant": "primary" },
-    { "label": "Start a conversation", "href": "#contact", "variant": "ghost" }
+    { "label": "View projects", "href": "#projects", "variant": "ghost" },
+    { "label": "Start a conversation", "href": "#contact", "variant": "primary" }
   ],
   "quickFacts": [
     { "label": "Method", "value": "Plan, design, build, and validate", "icon": "GitBranch" },

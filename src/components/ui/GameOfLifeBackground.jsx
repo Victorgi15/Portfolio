@@ -86,7 +86,14 @@ const GameOfLifeBackground = () => {
 
     const cellSize = 6;
     const stepInterval = 120;
-    const liveColor = 'rgba(210, 255, 0, 0.28)';
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue('--color-accent')
+      .trim();
+    const accentParts = accent.split(/\s+/).map(Number);
+    const liveColor =
+      accentParts.length >= 3 && accentParts.every((value) => Number.isFinite(value))
+        ? `rgba(${accentParts[0]}, ${accentParts[1]}, ${accentParts[2]}, 0.5)`
+        : 'rgba(210, 255, 0, 0.5)';
 
     let reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

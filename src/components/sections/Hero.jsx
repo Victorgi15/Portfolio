@@ -56,8 +56,8 @@ const Hero = ({ data }) => {
                   data-stick-platform="true"
                   className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold uppercase tracking-[0.12em] transition-all duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none hover:-translate-y-0.5 ${
                     cta.variant === 'primary'
-                      ? 'bg-[color:var(--color-accent)] text-[color:var(--color-base)] hover:brightness-110'
-                      : 'border border-[color:var(--color-border)] text-white hover:border-white hover:bg-white hover:text-[color:var(--color-base)]'
+                      ? 'bg-[rgba(var(--color-accent)/0.5)] text-[color:var(--color-base)] shadow-[0_0_0_1px_rgba(var(--color-accent)/0.2),0_7px_13px_rgba(var(--color-accent)/0.11)] hover:brightness-105 cta-pulse'
+                      : 'border border-[color:var(--color-border)] text-white hover:border-[color:var(--color-accent)] hover:bg-[color:var(--color-accent)] hover:text-[color:var(--color-base)]'
                   } ${focusRing}`}
                 >
                   {cta.label}
