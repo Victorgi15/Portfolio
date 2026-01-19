@@ -89,7 +89,6 @@ export const navigation = {
   links: [
     { id: 'home', label: 'Home' },
     { id: 'projects', label: 'Projects' },
-    { id: 'method', label: 'Method' },
     { id: 'skills', label: 'Capabilities' },
     { id: 'contact', label: 'Contact' },
   ],
