@@ -63,6 +63,11 @@ const ProjectCarousel = ({ images, title }) => {
 };
 
 const Projects = ({ data }) => {
+  const [showAll, setShowAll] = useState(false);
+  const totalItems = data.items.length;
+  const visibleItems = showAll ? data.items : data.items.slice(0, 6);
+  const hasMore = totalItems > 6;
+
   return (
     <section id="projects" className="py-20">
       <div className="mx-auto w-full max-w-[1400px] px-6">
@@ -76,7 +81,7 @@ const Projects = ({ data }) => {
           />
         </MotionReveal>
         <div className="mt-12 grid gap-12 lg:gap-14 lg:grid-cols-2 xl:grid-cols-3">
-          {data.items.map((project, index) => {
+          {visibleItems.map((project, index) => {
             const hasSite = Boolean(project.site?.href);
             const hasSource = Boolean(project.link?.href);
             const cardHref = hasSite ? project.site.href : project.link?.href;
@@ -85,6 +90,7 @@ const Projects = ({ data }) => {
             const showSourceButton =
               hasSite && hasSource && project.status === 'Open source';
             const isClickable = Boolean(cardHref);
+            const shouldAnimate = !showAll || index < 6;
 
             const handleCardClick = () => {
               if (!cardHref) return;
@@ -99,104 +105,131 @@ const Projects = ({ data }) => {
               }
             };
 
-            return (
-              <MotionReveal key={project.title} delay={index * 0.05}>
-                <div
-                  role={isClickable ? 'link' : undefined}
-                  tabIndex={isClickable ? 0 : undefined}
-                  onClick={isClickable ? handleCardClick : undefined}
-                  onKeyDown={isClickable ? handleKeyDown : undefined}
-                  className={`group block h-full ${
-                    isClickable ? `cursor-pointer ${focusRing}` : ''
-                  }`}
+            const card = (
+              <div
+                role={isClickable ? 'link' : undefined}
+                tabIndex={isClickable ? 0 : undefined}
+                onClick={isClickable ? handleCardClick : undefined}
+                onKeyDown={isClickable ? handleKeyDown : undefined}
+                className={`group block h-full ${isClickable ? `cursor-pointer ${focusRing}` : ''}`}
+              >
+                <Panel
+                  className="relative flex h-full flex-col gap-4 p-6 transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:border-[color:var(--color-accent)] group-hover:shadow-glow"
+                  data-stick-platform="true"
                 >
-                  <Panel
-                    className="relative flex h-full flex-col gap-4 p-6 transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:border-[color:var(--color-accent)] group-hover:shadow-glow"
-                    data-stick-platform="true"
-                  >
-                    {showSourceButton ? (
-                      <a
-                        href={project.link.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(event) => event.stopPropagation()}
-                        className="absolute right-6 top-6 inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[9px] uppercase leading-tight tracking-[0.2em] text-[color:var(--color-muted)] whitespace-nowrap transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
-                      >
-                        {statusLabel}
-                      </a>
-                    ) : (
-                      <span className="absolute right-6 top-6 inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[9px] uppercase leading-tight tracking-[0.2em] text-[color:var(--color-muted)] whitespace-nowrap">
-                        {statusLabel}
-                      </span>
-                    )}
-                    <div className="flex items-start pr-28">
-                      <h3 className="project-title text-lg font-display font-semibold text-white">
-                        {project.title}
-                      </h3>
-                    </div>
-                <p className="project-summary text-sm text-[color:var(--color-muted)]">
-                  {project.summary}
-                </p>
-                {project.images && project.images.length ? (
-                  <ProjectCarousel images={project.images} title={project.title} />
-                ) : project.video ? (
-                  <div
-                    className={`h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] box-border ${
-                      project.videoFit === 'contain' ? 'p-3' : ''
-                    }`}
-                  >
-                    <video
-                      src={project.video}
-                      className={`h-full w-full ${
-                        project.videoFit === 'contain'
-                          ? 'object-contain'
-                          : 'object-cover brightness-90'
-                      }`}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      aria-label={project.videoAlt || project.title}
-                    />
+                  {showSourceButton ? (
+                    <a
+                      href={project.link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(event) => event.stopPropagation()}
+                      className="absolute right-6 top-6 inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[9px] uppercase leading-tight tracking-[0.2em] text-[color:var(--color-muted)] whitespace-nowrap transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)]"
+                    >
+                      {statusLabel}
+                    </a>
+                  ) : (
+                    <span className="absolute right-6 top-6 inline-flex min-h-6 items-center justify-center rounded-full border border-[color:var(--color-border)] px-3 py-1 text-center text-[9px] uppercase leading-tight tracking-[0.2em] text-[color:var(--color-muted)] whitespace-nowrap">
+                      {statusLabel}
+                    </span>
+                  )}
+                  <div className="flex items-start pr-28">
+                    <h3 className="project-title text-lg font-display font-semibold text-white">
+                      {project.title}
+                    </h3>
                   </div>
-                ) : project.image ? (
-                  <div
-                    className={`h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] box-border ${
-                      project.imageFit === 'contain' ? 'p-3' : ''
-                    }`}
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.imageAlt || project.title}
-                      className={`h-full w-full ${
-                        project.imageFit === 'contain'
-                          ? 'object-contain'
-                          : 'object-cover brightness-90'
+                  <p className="project-summary text-sm text-[color:var(--color-muted)]">
+                    {project.summary}
+                  </p>
+                  {project.images && project.images.length ? (
+                    <ProjectCarousel images={project.images} title={project.title} />
+                  ) : project.video ? (
+                    <div
+                      className={`h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] box-border ${
+                        project.videoFit === 'contain' ? 'p-3' : ''
                       }`}
-                      loading="lazy"
-                    />
-                  </div>
-                ) : null}
-                <div className="flex flex-wrap gap-2 text-xs">
-                  {project.stack.map((item) => (
-                    <Tag key={item} label={item} />
-                  ))}
-                </div>
-                <div className="mt-auto space-y-2">
-                  {project.impact.map((item) => (
-                    <div key={item} className="flex items-start gap-2 text-sm text-white">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--color-accent)]"></span>
-                      <span>{item}</span>
+                    >
+                      <video
+                        src={project.video}
+                        className={`h-full w-full ${
+                          project.videoFit === 'contain'
+                            ? 'object-contain'
+                            : 'object-cover brightness-90'
+                        }`}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        aria-label={project.videoAlt || project.title}
+                      />
                     </div>
-                  ))}
-                </div>
-                  </Panel>
-                </div>
+                  ) : project.image ? (
+                    <div
+                      className={`h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)] box-border ${
+                        project.imageFit === 'contain' ? 'p-3' : ''
+                      }`}
+                    >
+                      <img
+                        src={project.image}
+                        alt={project.imageAlt || project.title}
+                        className={`h-full w-full ${
+                          project.imageFit === 'contain'
+                            ? 'object-contain'
+                            : 'object-cover brightness-90'
+                        }`}
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : null}
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    {project.stack.map((item) => (
+                      <Tag key={item} label={item} />
+                    ))}
+                  </div>
+                  <div className="mt-auto space-y-2">
+                    {project.impact.map((item) => (
+                      <div key={item} className="flex items-start gap-2 text-sm text-white">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--color-accent)]"></span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Panel>
+              </div>
+            );
+
+            return shouldAnimate ? (
+              <MotionReveal key={project.title} delay={index * 0.05}>
+                {card}
               </MotionReveal>
+            ) : (
+              <div key={project.title}>{card}</div>
             );
           })}
         </div>
+        {hasMore ? (
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            {showAll ? (
+              <button
+                type="button"
+                onClick={() => setShowAll(false)}
+                data-stick-platform="true"
+                className={`inline-flex items-center justify-center rounded-full border border-[color:var(--color-border)] px-6 py-2.5 text-sm uppercase tracking-[0.22em] text-white transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] ${focusRing}`}
+              >
+                Collapse projects
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setShowAll(true)}
+                data-stick-platform="true"
+                className={`shine-button inline-flex items-center justify-center rounded-full border border-[color:var(--color-border)] px-6 py-2.5 text-sm uppercase tracking-[0.22em] text-white transition hover:border-[color:var(--color-accent)] hover:text-[color:var(--color-accent)] ${focusRing}`}
+              >
+                View all projects
+              </button>
+            )}
+          </div>
+        ) : null}
       </div>
     </section>
   );

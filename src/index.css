@@ -177,12 +177,56 @@ body::before {
   opacity: 0.9;
 }
 
+.shine-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-button::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -40%;
+  width: 40%;
+  height: 160%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 45%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.18) 55%,
+    transparent 100%
+  );
+  transform: translateX(-140%) skewX(-18deg);
+  animation: buttonShine 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
 @keyframes barSweep {
   0% {
     transform: translateX(-100%);
   }
   100% {
     transform: translateX(100%);
+  }
+}
+
+@keyframes buttonShine {
+  0%,
+  40% {
+    transform: translateX(-140%) skewX(-18deg);
+    opacity: 0;
+  }
+  55% {
+    opacity: 0.9;
+  }
+  70% {
+    transform: translateX(260%) skewX(-18deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(260%) skewX(-18deg);
+    opacity: 0;
   }
 }
 
@@ -207,7 +251,8 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .loading-bar--shine::after,
   .loading-bar--striped::after,
-  .loading-bar--beacon::after {
+  .loading-bar--beacon::after,
+  .shine-button::after {
     animation: none;
   }
 }
