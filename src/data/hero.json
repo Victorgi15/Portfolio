@@ -7,9 +7,9 @@
     { "label": "Start a conversation", "href": "#contact", "variant": "ghost" }
   ],
   "quickFacts": [
-    { "label": "Focus", "value": "Robotics and embedded systems" },
-    { "label": "Stack", "value": "Python, ROS, embedded Linux, JS/React" },
-    { "label": "Mechanics", "value": "CAD design, assemblies, mesh, 3D printing" }
+    { "label": "Method", "value": "Plan, design, build, and validate", "icon": "GitBranch" },
+    { "label": "Stack", "value": "Python, ROS, Linux, JS/React", "icon": "Terminal" },
+    { "label": "Mechanics", "value": "CAD design, assemblies, mesh, 3D printing", "icon": "Wrench" }
   ],
   "toolbox": [
     { "label": "Electronics", "detail": "PCBs, sensors, power control", "icon": "CircuitBoard" },

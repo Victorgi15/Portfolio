@@ -4,11 +4,13 @@ import {
   CircuitBoard,
   Cpu,
   Gauge,
+  GitBranch,
   Github,
   Linkedin,
   Mail,
   MapPin,
   ShieldCheck,
+  Terminal,
   Wrench,
 } from 'lucide-react';
 import spotifyExporterImage from '../assets/spotify-exporter/spotify-exporter.png';
@@ -56,7 +58,15 @@ const heroIcons = {
   Activity,
   CircuitBoard,
   Cpu,
+  GitBranch,
+  Terminal,
+  Wrench,
 };
+
+const mapHeroQuickFact = (item) => ({
+  ...item,
+  icon: heroIcons[item.icon] ?? item.icon,
+});
 
 const mapHeroToolboxItem = (item) => ({
   ...item,
@@ -109,6 +119,7 @@ export const navigation = {
 
 export const hero = {
   ...heroData,
+  quickFacts: heroData.quickFacts.map(mapHeroQuickFact),
   toolbox: heroData.toolbox.map(mapHeroToolboxItem),
   systemSnapshot: currentProjectData,
 };

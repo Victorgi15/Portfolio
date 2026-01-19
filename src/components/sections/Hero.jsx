@@ -65,18 +65,29 @@ const Hero = ({ data }) => {
               ))}
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
-              {data.quickFacts.map((fact) => (
-                <div
-                  key={fact.label}
-                  data-stick-platform="true"
-                  className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel)] p-4"
-                >
-                  <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
-                    {fact.label}
-                  </p>
-                  <p className="mt-2 text-sm text-white">{fact.value}</p>
-                </div>
-              ))}
+              {data.quickFacts.map((fact) => {
+                const Icon = fact.icon;
+
+                return (
+                  <div
+                    key={fact.label}
+                    data-stick-platform="true"
+                    className="flex items-center gap-3 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-panel)] p-4"
+                  >
+                    {Icon ? (
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-panel-soft)]">
+                        <Icon className="h-4 w-4 text-[color:var(--color-accent-2)]" />
+                      </span>
+                    ) : null}
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
+                        {fact.label}
+                      </p>
+                      <p className="mt-1 text-sm text-white">{fact.value}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
             {data.toolbox && data.toolbox.length ? (
               <div className="grid gap-4 sm:grid-cols-3">
