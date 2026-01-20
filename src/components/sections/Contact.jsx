@@ -18,7 +18,7 @@ const Contact = ({ data }) => {
         </MotionReveal>
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <MotionReveal>
-            <Panel className="flex h-full flex-col gap-6 p-6">
+            <Panel className="flex h-full flex-col gap-6 p-6" data-stick-platform="true">
               <p className="text-base text-[color:var(--color-muted)]">{data.description}</p>
               <div className="flex flex-wrap gap-4">
                 {data.ctas.map((cta) => (
@@ -57,7 +57,7 @@ const Contact = ({ data }) => {
             </Panel>
           </MotionReveal>
           <MotionReveal delay={0.1}>
-            <Panel className="flex h-full flex-col gap-6 p-6">
+            <Panel className="flex h-full flex-col gap-6 p-6" data-stick-platform="true">
               <div>
                 <p className="text-xs uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
                   {data.socialLabel}
