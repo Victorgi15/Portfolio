@@ -205,5 +205,5 @@ export const contact = {
 };
 
 export const footer = {
-  note: 'Built for engineering teams that value reliable systems and clear validation.',
+  note: 'Still reading? Absolute respect.',
 };
