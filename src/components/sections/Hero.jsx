@@ -245,7 +245,7 @@ const Hero = ({ data }) => {
                 </div>
               </div>
             </div>
-            <div className="gol-hole gol-hole--float" aria-hidden="true">
+            <div className="gol-hole gol-hole--float" data-gravity-card="true" aria-hidden="true">
               <GameOfLifeBackground />
             </div>
           </MotionReveal>

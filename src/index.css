@@ -57,6 +57,26 @@ body::before {
   z-index: 2;
 }
 
+[data-gravity-target="true"] {
+  translate: 0 0;
+  rotate: 0deg;
+  transition:
+    translate var(--gravity-duration, 0.8s) cubic-bezier(0.2, 0, 0.6, 1)
+      var(--gravity-delay, 0s),
+    rotate var(--gravity-duration, 0.8s) cubic-bezier(0.2, 0, 0.6, 1)
+      var(--gravity-delay, 0s);
+}
+
+body.gravity-active {
+  overflow-x: hidden;
+}
+
+body.gravity-active [data-gravity-target="true"] {
+  translate: var(--gravity-x, 0px) var(--gravity-y, 0px);
+  rotate: var(--gravity-rot, 0deg);
+  will-change: translate, rotate;
+}
+
 .gol-hole {
   --gol-shift: clamp(8px, 1.6vw, 20px);
   --gol-extend-x: clamp(24px, 6vw, 96px);
@@ -127,6 +147,10 @@ body::before {
 
   .cta-pulse {
     animation: none;
+  }
+
+  [data-gravity-target="true"] {
+    transition: none;
   }
 }
 
