@@ -3,6 +3,7 @@ import {
   Bot,
   CircuitBoard,
   Cpu,
+  FileDown,
   Gauge,
   GitBranch,
   Github,
@@ -29,6 +30,8 @@ import geoguessSergeImageTwo from '../assets/GeoguessSerge/GeoguessSerge2.png';
 import dotAndBoxesImage from '../assets/dot-and-boxes/dot-and-boxes.png';
 import ragPocImage from '../assets/RAG/rag.png';
 import jumpEvolutionVideo from '../assets/simu/triad.mp4';
+import cvMechatronics from '../assets/CV/CV-2025-English-mecatronics-engineer.pdf';
+import cvProductOwner from '../assets/CV/CV-2025-English-PO.pdf';
 import projectsData from './projects.json';
 import methodData from './method.json';
 import heroData from './hero.json';
@@ -157,24 +160,47 @@ export const contact = {
   eyebrow: 'Contact',
   title: "Let's build reliable systems together.",
   description:
-    'Open to robotics, automation, or embedded systems projects that need tight integration and testing.',
+    "If you have an opportunity, a project, or want to discuss robotics, mechatronics, or product owner challenges, I'm available.",
   directLabel: 'Direct',
   socialLabel: 'Social',
-  email: 'victor@your-domain.com',
+  email: 'victor.gilliocq@gmail.com',
   location: 'France / EU',
-  availability: 'Freelance or full-time collaborations',
   ctas: [
-    { label: 'Email me', href: 'mailto:victor@your-domain.com', variant: 'primary' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/your-handle', variant: 'ghost' },
+    { label: 'Email me', href: 'mailto:victor.gilliocq@gmail.com', variant: 'primary' },
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/victor-gilliocq-473613183/',
+      variant: 'ghost',
+    },
   ],
   socials: [
-    { label: 'Email', href: 'mailto:victor@your-domain.com', icon: Mail },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/your-handle', icon: Linkedin },
-    { label: 'GitHub', href: 'https://github.com/your-handle', icon: Github },
+    { label: 'Email', href: 'mailto:victor.gilliocq@gmail.com', icon: Mail },
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/victor-gilliocq-473613183/',
+      icon: Linkedin,
+    },
+    { label: 'GitHub', href: 'https://github.com/Victorgi15', icon: Github },
+  ],
+  downloadsLabel: 'Downloads',
+  downloads: [
+    {
+      label: 'Looking for a Product Owner?',
+      href: cvProductOwner,
+      icon: FileDown,
+      download: 'Victor-Gilliocq-CV-Product-Owner-EN.pdf',
+    },
+    {
+      label: 'Looking for a Mechatronics Engineer?',
+      href: cvMechatronics,
+      icon: FileDown,
+      download: 'Victor-Gilliocq-CV-Mechatronics-EN.pdf',
+    },
   ],
   meta: [
-    { label: 'Location', value: 'France / EU', icon: MapPin },
-    { label: 'Focus', value: 'Robotics, embedded, integration', icon: Gauge },
+    { label: 'Availability', value: 'Open to all opportunities.', icon: ShieldCheck },
+    { label: 'Location', value: 'France / EU (Toulouse, Montpellier, Avignon)', icon: MapPin },
+    { label: 'Focus', value: 'Mechatronics, robotics, product owner, team lead', icon: Gauge },
   ],
 };
 
